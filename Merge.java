@@ -10,6 +10,14 @@ public class Merge {
   }
 
   public static void mergesort(int[] data, int lo, int hi) {
+    if (hi > lo) { 
+      return;
+    }else{// if the array list is longer than 1 element long.
+      int newI = (hi-lo)/2 + lo;
+      mergesort(data,lo,newI);
+      mergesort(data,newI+1,hi);
+    }
+    //gets to this point once the
 
   }
 
