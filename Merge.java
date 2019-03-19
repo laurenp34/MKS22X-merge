@@ -9,16 +9,21 @@ public class Merge {
 
   }
 
-  public static void mergesort(int[] data, int lo, int hi) {
-    if (hi > lo) { 
-      return;
-    }else{// if the array list is longer than 1 element long.
+  public static int[] mergesort(int[] data, int lo, int hi) {
+    if (hi > lo) { // if the array list is longer than 1 element long.
       int newI = (hi-lo)/2 + lo;
-      mergesort(data,lo,newI);
-      mergesort(data,newI+1,hi);
+      int[] t1 = mergesort(data,lo,newI);
+      int[] t2 = mergesort(data,newI+1,hi);
     }
-    //gets to this point once the
+    //gets to this point once the array consists of 2 single-element arrays
 
+    System.out.println(lo+", "+hi);
+
+  }
+
+  public static void main(String[] args) {
+    int[] data = {4,2,6,7,3,4,2};
+    mergesort(data);
   }
 
 
