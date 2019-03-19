@@ -15,14 +15,19 @@ public class Merge {
   public static int[] mergesort(int[] data, int lo, int hi) {
     if (hi > lo) {//if the array list is longer than 1 element long.
           int newI = (hi-lo)/2 + lo;
-          mergesort(data,lo,newI);
-          mergesort(data,newI+1,hi);
-    }
+          int[] t1 = mergesort(data,lo,newI);
+          int[] t2 = mergesort(data,newI+1,hi);
+
+
+    } 
 
     //gets to this point once the array consists of 2 single-element arrays
 
-    System.out.println(lo+", "+hi);
-    return null;
+
+    data = merge(t1,t2);
+    return data;
+    //System.out.println(lo+", "+hi);
+
   }
 
   private static int[] merge(int[] d1, int[] d2) {
@@ -64,7 +69,9 @@ public class Merge {
   public static void main(String[] args) {
     int[] data = {3,5,5,6};
     int[] d2 = {1,4,5,5,6};
-    System.out.println(Arrays.toString(merge(data,d2)));
+    int[] d = {4,2,6,8,5,3};
+    mergesort(d);
+    System.out.println(Arrays.toString(d));
   }
 
 
