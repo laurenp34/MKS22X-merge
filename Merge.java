@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 public class Merge {
 
   /*sort the array from least to greatest value. This is a wrapper function*/
@@ -10,25 +13,58 @@ public class Merge {
   }
 
   public static int[] mergesort(int[] data, int lo, int hi) {
-    if (hi > lo) { // if the array list is longer than 1 element long.
-      int newI = (hi-lo)/2 + lo;
-      int[] t1 = mergesort(data,lo,newI);
-      int[] t2 = mergesort(data,newI+1,hi);
+    if (hi > lo) {//if the array list is longer than 1 element long.
+          int newI = (hi-lo)/2 + lo;
+          mergesort(data,lo,newI);
+          mergesort(data,newI+1,hi);
     }
+
     //gets to this point once the array consists of 2 single-element arrays
 
     System.out.println(lo+", "+hi);
-
+    return null;
   }
 
   private static int[] merge(int[] d1, int[] d2) {
     int[] result = new int[d1.length+d2.length];
-
+    int idx = 0;
+    int i1 = 0; int i2 = 0;
+    while (i1 < d1.length || i2 < d2.length) {
+      if (i1 >= d1.length) {
+        result[idx] = d2[i2];
+        i2++;
+        idx++;
+      } else if (i2 >= d2.length) {
+        result[idx] = d1[i1];
+        i1++;
+        idx++;
+      } else {
+        int add = 0;
+        if (d1[i1] < d2[i2]) {
+          result[idx] = d1[i1];
+          i1++;
+          idx++;
+        } else if (d2[i2] < d1[i1]) {
+          result[idx] = d2[i2];
+          i2++;
+          idx++;
+        } else {//if the values are equal
+          result[idx] = d2[i2];
+          idx++;
+          result[idx] = d1[i1];
+          idx++;
+          i1++;
+          i2++;
+        }
+      }
+    }
+    return result;
   }
 
   public static void main(String[] args) {
-    int[] data = {4,2,6,7,3,4,2};
-    mergesort(data);
+    int[] data = {3,5,5,6};
+    int[] d2 = {1,4,5,5,6};
+    System.out.println(Arrays.toString(merge(data,d2)));
   }
 
 
