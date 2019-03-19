@@ -21,6 +21,11 @@ public class Merge {
 
   }
 
+  private static int[] merge(int[] d1, int[] d2) {
+    int[] result = new int[d1.length+d2.length];
+
+  }
+
   public static void main(String[] args) {
     int[] data = {4,2,6,7,3,4,2};
     mergesort(data);
