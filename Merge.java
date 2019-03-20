@@ -12,20 +12,21 @@ public class Merge {
 
   }
 
-  public static int[] mergesort(int[] data, int lo, int hi) {
+  public static void mergesort(int[] data, int lo, int hi) {
     if (hi > lo) {//if the array list is longer than 1 element long.
           int newI = (hi-lo)/2 + lo;
-          int[] t1 = mergesort(data,lo,newI);
-          int[] t2 = mergesort(data,newI+1,hi);
+          mergesort(data,lo,newI);
+          mergesort(data,newI+1,hi);
+          //reaches this point when
+          merge(data,lo,newI,newI+1,hi);
 
-
-    } 
+    }
 
     //gets to this point once the array consists of 2 single-element arrays
 
 
-    data = merge(t1,t2);
-    return data;
+    //data = merge(t1,t2);
+    //return data;
     //System.out.println(lo+", "+hi);
 
   }
@@ -66,12 +67,49 @@ public class Merge {
     return result;
   }
 
+  private static void merge(int[] data, int i1, int i2, int i3, int i4){
+    int[] d1 = Arrays.copyOfRange(data,i1,i2);
+    int[] d2 = Arrays.copyOfRange(data,i3,i4);
+
+    int idx = i1;
+    int i = 0; int ii = 0;
+    while (i < d1.length || ii < d2.length) {
+      if (i >= d1.length) {
+        data[idx] = d2[ii];
+        ii++;
+        idx++;
+      } else if (ii >= d2.length) {
+        data[idx] = d1[i];
+        i++;
+        idx++;
+      } else {
+        int add = 0;
+        if (d1[i] < d2[ii]) {
+          data[idx] = d1[i];
+          i++;
+          idx++;
+        } else if (d2[ii] < d1[i]) {
+          data[idx] = d2[ii];
+          ii++;
+          idx++;
+        } else {//if the values are equal
+          data[idx] = d2[ii];
+          idx++;
+          data[idx] = d1[i];
+          idx++;
+          i++;
+          ii++;
+        }
+      }
+    }
+  }
+
   public static void main(String[] args) {
     int[] data = {3,5,5,6};
-    int[] d2 = {1,4,5,5,6};
+    int[] d2 = {1,4,5,3,4,9,3};
     int[] d = {4,2,6,8,5,3};
-    mergesort(d);
-    System.out.println(Arrays.toString(d));
+    merge(d2,0,2,3,5);
+    System.out.println(Arrays.toString(d2));
   }
 
 
