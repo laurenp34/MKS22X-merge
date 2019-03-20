@@ -18,9 +18,9 @@ public class Merge {
           mergesort(data,lo,newI);
           mergesort(data,newI+1,hi);
           //reaches this point when
-          System.out.println(lo+", "+newI+", "+hi+"\t"+Arrays.toString(data));
+          //System.out.println(lo+", "+newI+", "+hi+"\t"+Arrays.toString(data));
           merge(data,lo,newI,newI+1,hi);
-          System.out.println(Arrays.toString(data));
+          //System.out.println(Arrays.toString(data));
 
     }
 
