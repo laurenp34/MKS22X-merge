@@ -8,7 +8,7 @@ public class Merge {
     if (data.length <= 1) return;
     mergesort(data,0,(data.length/2)-1);
     mergesort(data,(data.length/2),data.length-1);
-
+    merge(data,0,(data.length/2)-1,(data.length/2),data.length-1);
 
   }
 
@@ -70,8 +70,8 @@ public class Merge {
   }
 
   private static void merge(int[] data, int i1, int i2, int i3, int i4){
-    int[] d1 = Arrays.copyOfRange(data,i1,i2);
-    int[] d2 = Arrays.copyOfRange(data,i3,i4);
+    int[] d1 = Arrays.copyOfRange(data,i1,i2+1);
+    int[] d2 = Arrays.copyOfRange(data,i3,i4+1);
 
     int idx = i1;
     int i = 0; int ii = 0;
