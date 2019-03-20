@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-  public class KDriver{
+  public class KDriver2{
 //Sort testing code
  private static final int INCREASE = 0;
  private static final int DECREASE = 1;
