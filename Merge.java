@@ -123,7 +123,7 @@ public class Merge {
   public static void insert(int[] data, int i1, int i2) { // insert i1 at inde i2.
     //precondition: i1 is after i2. (works for implementation)
     int temp = data[i1];
-    for (int i=i1-1;i>i2;i--) {
+    for (int i=i1;i>i2;i--) {
       data[i] = data[i-1];
     }
     data[i2] = temp;
@@ -133,6 +133,9 @@ public class Merge {
     int[] data = {3,5,5,6};
     int[] d2 = {1,4,5,3,4,9,3,4,5,6,2,4,5};
     int[] d = {4,2,6,8,5,3};
+
+    insert(data,3,0);
+    System.out.println(Arrays.toString(data));
 
     insertionsort(d2,0,12);
     System.out.println(Arrays.toString(d2));
