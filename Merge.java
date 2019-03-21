@@ -114,14 +114,14 @@ public class Merge {
 
   public static void insertionsort(int[] data, int lo,int hi)  {
     for (int i=lo+1;i<=hi;i++) {
-      System.out.println(data[i]);
-      System.out.println(Arrays.toString(data));
+      //System.out.println(data[i]);
+      //System.out.println(Arrays.toString(data));
       int el = data[i];
       boolean found = false;
       for (int i2=i-1;i2>=lo;i2--) {
         if (data[i2] <= data[i]) {
           found = true;
-          insert(data,i,(i2+1)); System.out.println("insert: "+(i2+1));
+          insert(data,i,(i2+1)); //System.out.println("insert: "+(i2+1));
           i2 = lo-1; // break out of loop.
         }
       } // if element was less than all previous elements, insert at front
@@ -139,7 +139,7 @@ public class Merge {
   }
 
   public static void main(String[] args) {
-    int[] data = {3,5,5,6};
+    int[] data = {3,5,5,6,8};
     int[] d2 = {1,4,5,3,4,9,3,4,5,6,2,4,5};
     int[] d = {4,2,6,8,5,3};
 
@@ -153,8 +153,8 @@ public class Merge {
     //System.out.println(Arrays.toString(d2));
 
     System.out.println("\n\n");
-    insertionsort(d,0,5);
-    System.out.println(Arrays.toString(d));
+    mergesort(data,0,data.length-1);
+    System.out.println(Arrays.toString(data));
   }
 
 
