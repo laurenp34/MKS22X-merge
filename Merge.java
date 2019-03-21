@@ -106,10 +106,35 @@ public class Merge {
     }
   }
 
+  public static void insertionsort(int[] data, int lo,int hi)  {
+    for (int i=lo+1;i<=hi;i++) {
+      int el = data[i];
+      for (int i2=lo;i2<i;i2++) {
+        if (data[i2] >= data[i]) {
+          insert(data,i2,i);
+          i2 = i; // break out of loop.
+        }
+      }
+    }
+  }
+
+  public static void insert(int[] data, int i1, int i2) { // insert i1 at inde i2.
+    //precondition: i1 is after i2. (works for implementation)
+    int temp = data[i1];
+    for (int i=i1-1;i>i2;i--) {
+      data[i] = data[i-1];
+    }
+    data[i2] = temp;
+  }
+
   public static void main(String[] args) {
     int[] data = {3,5,5,6};
-    int[] d2 = {1,4,5,3,4,9,3};
+    int[] d2 = {1,4,5,3,4,9,3,4,5,6,2,4,5};
     int[] d = {4,2,6,8,5,3};
+
+    insertionsort(d2,0,12);
+    System.out.println(Arrays.toString(d2));
+
     merge(d2,0,2,3,5);
     System.out.println(Arrays.toString(d2));
 
