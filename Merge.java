@@ -13,15 +13,21 @@ public class Merge {
   }
 
   public static void mergesort(int[] data, int lo, int hi) {
-    if (hi > lo) {//if the array list is longer than 1 element long.
-          int newI = (hi-lo)/2 + lo;
-          mergesort(data,lo,newI);
-          mergesort(data,newI+1,hi);
-          //reaches this point when
-          //System.out.println(lo+", "+newI+", "+hi+"\t"+Arrays.toString(data));
-          merge(data,lo,newI,newI+1,hi);
-          //System.out.println(Arrays.toString(data));
+    if (lo+86 >= hi) {//orig size is 86, each component array roughly will be 43.
+      //this means the component arrays will each be roughly 43 or smaller.
+      insertionsort(data,lo,hi);
 
+    } else { // gets here if longer than 43.
+      int newI = (hi-lo)/2 + lo;
+
+        mergesort(data,lo,newI);
+        mergesort(data,newI+1,hi);
+
+      //reaches this point when
+      //System.out.println(lo+", "+newI+", "+hi+"\t"+Arrays.toString(data));
+
+        merge(data,lo,newI,newI+1,hi);
+      //System.out.println(Arrays.toString(data));
     }
 
     //gets to this point once the array consists of 2 single-element arrays
@@ -111,12 +117,15 @@ public class Merge {
       System.out.println(data[i]);
       System.out.println(Arrays.toString(data));
       int el = data[i];
+      boolean found = false;
       for (int i2=i-1;i2>=lo;i2--) {
         if (data[i2] <= data[i]) {
+          found = true;
           insert(data,i,(i2+1)); System.out.println("insert: "+(i2+1));
           i2 = lo-1; // break out of loop.
         }
-      }
+      } // if element was less than all previous elements, insert at front
+      if (!found) insert(data,i,lo);
     }
   }
 
@@ -137,14 +146,14 @@ public class Merge {
     //insert(data,3,0);
     //System.out.println(Arrays.toString(data));
 
-    insertionsort(d2,0,12);
-    System.out.println(Arrays.toString(d2));
+    //insertionsort(d2,0,12);
+    //System.out.println(Arrays.toString(d2));
 
-    merge(d2,0,2,3,5);
-    System.out.println(Arrays.toString(d2));
+    //merge(d2,0,2,3,5);
+    //System.out.println(Arrays.toString(d2));
 
     System.out.println("\n\n");
-    mergesort(d);
+    insertionsort(d,0,5);
     System.out.println(Arrays.toString(d));
   }
 
