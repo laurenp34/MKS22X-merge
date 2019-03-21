@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
-  public class KDriver2{
+public class KDriver2{
+
 //Sort testing code
  private static final int INCREASE = 0;
  private static final int DECREASE = 1;
@@ -63,10 +64,9 @@ import java.util.Arrays;
    Arrays.sort(result);
 
    long startTime = System.currentTimeMillis();
-   /*
-    * Test your sort here //yoursort(start);
-    * Add code to switch which sort is tested by changing one of the args!
-    */
+
+   Merge.mergesort(start);
+
    long elapsedTime = System.currentTimeMillis() - startTime;
    if(Arrays.equals(start,result)){
      System.out.println("PASS Case "+name(type)+"\t array, size:"+start.length+"\t"+elapsedTime/1000.0+"sec ");
