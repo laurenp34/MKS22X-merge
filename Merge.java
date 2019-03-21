@@ -108,10 +108,12 @@ public class Merge {
 
   public static void insertionsort(int[] data, int lo,int hi)  {
     for (int i=lo+1;i<=hi;i++) {
+      System.out.println(data[i]);
+      System.out.println(Arrays.toString(data));
       int el = data[i];
       for (int i2=lo;i2<i;i2++) {
         if (data[i2] >= data[i]) {
-          insert(data,i2,i);
+          insert(data,i2,i); System.out.println("insert: "+i);
           i2 = i; // break out of loop.
         }
       }
