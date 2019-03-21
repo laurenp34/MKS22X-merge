@@ -111,10 +111,10 @@ public class Merge {
       System.out.println(data[i]);
       System.out.println(Arrays.toString(data));
       int el = data[i];
-      for (int i2=lo;i2<i;i2++) {
-        if (data[i2] >= data[i]) {
-          insert(data,i2,i); System.out.println("insert: "+i);
-          i2 = i; // break out of loop.
+      for (int i2=i-1;i2>=lo;i2--) {
+        if (data[i2] <= data[i]) {
+          insert(data,i,(i2+1)); System.out.println("insert: "+(i2+1));
+          i2 = lo-1; // break out of loop.
         }
       }
     }
@@ -134,8 +134,8 @@ public class Merge {
     int[] d2 = {1,4,5,3,4,9,3,4,5,6,2,4,5};
     int[] d = {4,2,6,8,5,3};
 
-    insert(data,3,0);
-    System.out.println(Arrays.toString(data));
+    //insert(data,3,0);
+    //System.out.println(Arrays.toString(data));
 
     insertionsort(d2,0,12);
     System.out.println(Arrays.toString(d2));
